@@ -1,0 +1,3 @@
+# Welcome to the Green Light Red Light Game, Inspired from Squid Game Web Series
+
+### It's a 2D game which you can play using focusing your hands on the screen( no keyboard or mouse, only hand detection).....
