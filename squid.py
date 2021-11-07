@@ -12,7 +12,7 @@ mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture(1)
 cap.set(3, 1200)
 cap.set(4, 720)
 w,h=cap.get(3),cap.get(4)
@@ -166,7 +166,7 @@ with mp_hands.Hands(model_complexity=0,min_detection_confidence=0.5,min_tracking
                         if i_prev!=i and end:                 
                             if 650-i>k:
                                 kill=True
-                                print(k)
+                                
                                 image[20+k:60+k,624:664]=image[20+k:60+k,624:664] * (1 - bullet[:, :, 3:] / 255) + bullet[:, :, :3] * (bullet[:, :, 3:] / 255)
                             image[200:351,100:989]=image[200:351,100:989] * (1 - killTitle[:, :, 3:] / 255) + killTitle[:, :, :3] * (killTitle[:, :, 3:] / 255)
                             cv2.line(image,(605,665-i),(675,715-i),(0,0,255),2)
