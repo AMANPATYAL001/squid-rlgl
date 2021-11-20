@@ -12,7 +12,7 @@ mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 cap.set(3, 1200)
 cap.set(4, 720)
 w,h=cap.get(3),cap.get(4)
@@ -106,7 +106,7 @@ with mp_hands.Hands(model_complexity=0,min_detection_confidence=0.5,min_tracking
         qu=False
         rest=False
         while True:
-            k=(cv2.waitKey(1) & 0xFF )
+            cv2.waitKey(1) & 0xFF
             success, image = cap.read()
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
             results = hands.process(image)
