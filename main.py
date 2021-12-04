@@ -87,7 +87,7 @@ with mp_hands.Hands(model_complexity=0,min_detection_confidence=0.5,min_tracking
 =1) as hands:
     while True:
         
-        counter=60
+        counter=43
         end=False
         win=False
         start=False
@@ -126,7 +126,7 @@ with mp_hands.Hands(model_complexity=0,min_detection_confidence=0.5,min_tracking
                 if start and not win and not kill:
                     j+=1
                 if not end and not kill:
-                    cv2.rectangle(image,(20,20),(370,220),(0,255,0),2)
+                    cv2.rectangle(image,(20,20),(370,220),(225,80,80),3)
 
                 if start and levelPass:
                     r,x,y=drawCircle()
@@ -135,7 +135,7 @@ with mp_hands.Hands(model_complexity=0,min_detection_confidence=0.5,min_tracking
                     levelPass=True
             
                 if x and y and not end and not kill:
-                    cv2.circle(image,(x,y),r,(0,255,0),2)
+                    cv2.circle(image,(x,y),r,(255,255,0),2)
                 
                 if i==0:
                     image[5:80,585:695]=girl
@@ -275,14 +275,14 @@ with mp_hands.Hands(model_complexity=0,min_detection_confidence=0.5,min_tracking
                 splash=False
                 break
             if start and not timeOut:
-                    if counter<0:
-                        i_prev=0
-                        timeOut=True
-                    counter=counter-(time.time()-sT)
                     image=cv2.flip(image,1)
                     if counter<15:
                         counterColor=(0,0,225)
                     cv2.putText(image,f'{round(counter,2)}',(20,60),cv2.FONT_HERSHEY_DUPLEX,2,counterColor,2)
+                    counter=counter-(time.time()-sT)
+                    if counter<=0:
+                        i_prev=0
+                        timeOut=True
                     image=cv2.flip(image,1)
     
             cv2.imshow('Green light Red light', cv2.flip(image, 1))
